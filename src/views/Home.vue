@@ -1,20 +1,14 @@
 <template>
-  <v-layout column>
-    HomePage
-  </v-layout>
+  <SearchBar/>
 </template>
 
 <script>
 
+import SearchBar from './components/SearchBar.vue'
 export default {
+  name: 'Home',
   components: {
-  },
-  data () {
-    return {
-    }
+    SearchBar
   }
 }
 </script>
-
-<style>
-</style>

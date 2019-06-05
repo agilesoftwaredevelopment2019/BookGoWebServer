@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 
 export default {
   name: 'Login',
@@ -37,18 +36,14 @@ export default {
   },
   methods: {
     onSubmit: function () {
-      axios.post('https://bookgo.herokuapp.com/users/login', {
+      this.$store.dispatch('try_sign_in_and_get_status', {
         idname: this.idname,
         password: this.password
-      })
-        .then(res => {
-          this.$store.state.user.login = true
-          this.$store.state.user.idname = res.data.idname
-          this.$store.state.user.nickname = res.data.nickname
-        })
+      }).then(() => this.$router.replace({ path: '/home' })
+      )
     },
     moveToSignUp: function () {
-      this.$router.push('SignUp')
+      this.$router.push({ path: 'signup' })
     }
   }
 }
