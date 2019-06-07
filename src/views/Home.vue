@@ -40,12 +40,10 @@ export default {
     ProductData
   },
   items: {
-    {
-      bookname: 'test'
-      price: 3000
-      seller_id: 12
-      id: 1
-    }
+    bookname: 'test',
+    price: 3000,
+    seller_id: 12,
+    id: 1
   }
 }
 </script>
