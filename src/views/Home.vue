@@ -9,11 +9,11 @@
         <SearchBar/>
         <div id="product_data_list">
           <ProductData
-            v-for="(bookname, price, seller_id) in items"
-            v-bind:bookname="bookname"
-            v-bind:price="price"
-            v-bind:seller_id="seller_id"
-            v-bind:key="bookname.id">
+            v-for="item in items"
+            v-bind:bookname="item.bookname"
+            v-bind:price="item.price"
+            v-bind:seller_id="item.seller_id"
+            v-bind:key="item.uid">
           </ProductData>
         </div>
       </div>
@@ -39,12 +39,22 @@ export default {
     AlarmBar,
     ProductData
   },
-  items: {
-    {
-      bookname: 'test'
-      price: 3000
-      seller_id: 12
-      id: 1
+  data () {
+    return {
+      items: [
+        {
+          uid: 1,
+          bookname: "test1",
+          price: 123,
+          seller_id: 1
+        },
+        {
+          uid: 2,
+          bookname: "test2",
+          price: 555,
+          seller_id: 3
+        }
+      ]
     }
   }
 }
@@ -54,7 +64,7 @@ export default {
   footer{
     position : fixed;
     bottom : 0;
-    width: 77%;
+    width: 100%;
     height:40px;
   }
 </style>
