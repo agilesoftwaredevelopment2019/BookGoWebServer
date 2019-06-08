@@ -4,6 +4,8 @@ import Home from './views/Home.vue'
 import LogIn from './views/LogIn.vue'
 import SignUp from './views/SignUp.vue'
 import Notification from './views/Notification.vue'
+import Book from './views/Book.vue'
+import Buy from './views/Buy.vue'
 
 Vue.use(Router)
 
@@ -30,6 +32,16 @@ export default new Router({
       path: '/notification',
       name: 'notification',
       component: Notification
+    },
+    {
+      path: '/book',
+      name: 'book',
+      component: Book
+    },
+    {
+      path: '/buy',
+      name: 'buy',
+      component: Buy
     }
   ]
 })

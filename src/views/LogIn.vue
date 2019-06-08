@@ -5,6 +5,7 @@
         v-model="idname"
         label="ID를 입력하세요"
         required
+        v-on:keyup.enter="onSubmit"
       ></v-text-field>
       <v-text-field
         v-model="password"
