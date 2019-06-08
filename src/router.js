@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import LogIn from './views/LogIn.vue'
 import SignUp from './views/SignUp.vue'
 import Search from './views/Search.vue'
+import MyPage from './views/MyPage.vue'
 
 Vue.use(Router)
 
@@ -30,6 +31,11 @@ export default new Router({
       path: '/search',
       name: 'search',
       component: Search
+    },
+    {
+      path: '/mypage',
+      name: 'mypage',
+      component: MyPage
     }
   ]
 })
