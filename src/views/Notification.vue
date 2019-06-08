@@ -6,9 +6,14 @@
       </p>
       <div align="center">
         <Noti
-          v-for="(bookname) in items"
-          v-bind:bookname="bookname"
-          v-bind:key="bookname.id">
+          v-for="(registeredBookname) in items"
+          v-bind:registeredBookname="registeredBookname"
+          v-bind:key="registeredBookname.id">
+        </Noti>
+        <Noti
+          v-for="(interestedBookname) in items"
+          v-bind:interestedBookname="interestedBookname"
+          v-bind:key="interestedBookname.id">
         </Noti>
         <p align="right">
           {{ datetime }}
