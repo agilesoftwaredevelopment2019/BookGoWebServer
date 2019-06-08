@@ -5,6 +5,7 @@ import LogIn from './views/LogIn.vue'
 import SignUp from './views/SignUp.vue'
 import Search from './views/Search.vue'
 import MyPage from './views/MyPage.vue'
+import Register from './views/Register.vue'
 
 Vue.use(Router)
 
@@ -36,6 +37,11 @@ export default new Router({
       path: '/mypage',
       name: 'mypage',
       component: MyPage
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: Register
     }
   ]
 })

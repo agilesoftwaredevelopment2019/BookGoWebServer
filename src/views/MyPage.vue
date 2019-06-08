@@ -1,5 +1,5 @@
 <template>
-    <v-layout align-center justify-center>
+    <v-layout class="align-center justify-center">
         <v-flex xs12 sm6>
             <div>
                 <SearchBar/>
@@ -50,6 +50,11 @@
                     </v-tab-item>
                 </v-tabs>
             </div>
+            <footer class="footer">
+                <v-btn v-on:click="moveToRegister" block color="blue">
+                    판매할 상품 등록하기
+                </v-btn>
+            </footer>
         </v-flex>
     </v-layout>
 </template>
@@ -72,10 +77,20 @@ export default {
     return {
 
     }
+  },
+  methods: {
+    moveToRegister: function () {
+      this.$router.push({ path: 'register' })
+    }
   }
 }
 </script>
 
 <style>
-
+    footer{
+        position : fixed;
+        bottom : 0;
+        width: 100%;
+        height:40px;
+    }
 </style>
