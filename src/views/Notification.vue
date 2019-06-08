@@ -4,7 +4,7 @@
       <p style="font-size:24px;" align="center">
           알림
       </p>
-      <div>
+      <div align="center">
         <Noti
           v-for="(bookname) in items"
           v-bind:bookname="bookname"
@@ -42,6 +42,9 @@ export default {
     home: function () {
       this.$router.push({ path: 'home' })
     }
+  },
+  components: {
+    Noti
   }
 }
 </script>
