@@ -9,10 +9,10 @@
         <v-flex xs7 d-flex>
           <v-layout align-center justify-center column wrap>
             <v-flex xs3>
-              {{ bookname }}
+              {{ title }}
             </v-flex>
             <v-flex xs7>
-              contents
+              {{ description }}
             </v-flex>
             <v-flex xs2>
               {{ price }}
@@ -32,9 +32,11 @@ export default {
     }
   },
   props: {
-    bookname: String,
+    uid: Number,
+    title: String,
     price: Number,
-    seller_id: Number
+    seller_id: Number,
+    description: String
   },
   methods: {
   },
