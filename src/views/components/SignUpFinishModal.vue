@@ -19,7 +19,7 @@ export default {
   methods: {
     move_to_home_page () {
       this.$emit('close')
-      this.$router.push({ path: '/login' })
+      this.$router.push({ path: '/' })
     }
   }
 }

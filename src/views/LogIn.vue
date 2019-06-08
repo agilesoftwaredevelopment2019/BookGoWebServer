@@ -39,7 +39,7 @@ export default {
       this.$store.dispatch('try_sign_in_and_get_status', {
         idname: this.idname,
         password: this.password
-      }).then(() => this.$router.replace({ path: '/home' })
+      }).then(() => this.$router.replace({ path: '/' })
       )
     },
     moveToSignUp: function () {

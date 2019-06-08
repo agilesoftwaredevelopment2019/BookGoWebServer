@@ -11,27 +11,26 @@
         </div>
         <div id="product_data_list">
           <ProductData
-<<<<<<< HEAD
-            v-for="item in items"
-            v-bind:bookname="item.bookname"
-            v-bind:price="item.price"
-            v-bind:seller_id="item.seller_id"
-            v-bind:key="item.uid">
-=======
             v-for="(item, index) in items"
             v-bind:title=item.title
             v-bind:price=item.price
             v-bind:seller_id=item.seller_id
             v-bind:uid=item.uid
             v-bind:key=index>
->>>>>>> 4bfda81bdff80b5bd02b1ca2a32bfb1b741624e0
           </ProductData>
         </div>
       </div>
       <footer class="footer">
-        <v-btn block color="blue">
-          로그인
-        </v-btn>
+        <div v-if="this.$store.state.login != true">
+          <v-btn v-on:click="moveToLogIn" block color="blue">
+            로그인
+          </v-btn>
+        </div>
+        <div v-else>
+          <v-btn v-on:click="moveToLogIn" block color="blue">
+            마이 페이지
+          </v-btn>
+        </div>
       </footer>
     </v-flex>
   </v-layout>
@@ -51,24 +50,7 @@ export default {
     AlarmBar,
     ProductData
   },
-<<<<<<< HEAD
-  data () {
-    return {
-      items: [
-        {
-          uid: 1,
-          bookname: "test1",
-          price: 123,
-          seller_id: 1
-        },
-        {
-          uid: 2,
-          bookname: "test2",
-          price: 555,
-          seller_id: 3
-        }
-      ]
-=======
+
   methods: {
     getProductData: function () {
       axios.get('https://bookgo.herokuapp.com/products', {
@@ -89,6 +71,9 @@ export default {
           this.$forceUpdate()
         })
       }
+    },
+    moveToLogIn: function () {
+      this.$router.push({ path: 'login' })
     }
   },
   beforeMount () {
@@ -100,7 +85,6 @@ export default {
       items: [
       ],
       cnt: 0
->>>>>>> 4bfda81bdff80b5bd02b1ca2a32bfb1b741624e0
     }
   }
 }
