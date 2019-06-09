@@ -1,13 +1,13 @@
 <template>
   <div>
-    <v-container fluid ma-2 pa-3 class="indigo lighten-4">
+    <v-container mb-2 class="indigo lighten-4">
       <v-layout>
         <v-flex xs5>
           <v-img height="150px" width="150px" src="https://picsum.photos/500/300?image=15">
           </v-img>
         </v-flex>
         <v-flex xs7 d-flex>
-          <v-layout align-center justify-center column wrap>
+          <v-layout align-center column>
             <v-flex xs3>
               {{ title }}
             </v-flex>

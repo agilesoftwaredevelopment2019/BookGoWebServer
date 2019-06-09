@@ -1,6 +1,6 @@
 <template>
   <v-layout class="v-layout align-center justify-center" mt-2>
-    <v-flex xs12 sm9>
+    <v-flex xs11>
       <div>
         <div id="fixed_components">
           <AlarmBar/>
@@ -20,7 +20,8 @@
           </ProductData>
         </div>
       </div>
-      <footer class="footer">
+    </v-flex>
+    <footer class="footer">
         <div v-if="this.$store.state.login != true">
           <v-btn v-on:click="moveToLogIn" block color="blue">
             로그인
@@ -32,7 +33,6 @@
           </v-btn>
         </div>
       </footer>
-    </v-flex>
   </v-layout>
 </template>
 
