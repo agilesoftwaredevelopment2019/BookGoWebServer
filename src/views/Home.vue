@@ -50,7 +50,6 @@ export default {
     AlarmBar,
     ProductData
   },
-
   methods: {
     getProductData: function () {
       axios.get('https://bookgo.herokuapp.com/products', {

@@ -11,11 +11,19 @@
             <v-flex xs3>
               {{ title }}
             </v-flex>
+            <v-flex xs3>
+              {{ author}}
+            </v-flex>
+            <v-flex xs3>
+              {{ publisher}}
             <v-flex xs7>
               {{ description }}
             </v-flex>
             <v-flex xs2>
               {{ price }}
+            </v-flex>
+            <v-flex xs7>
+              description
             </v-flex>
           </v-layout>
         </v-flex>
@@ -32,6 +40,9 @@ export default {
     }
   },
   props: {
+    bookname: String,
+    author: String,
+    publisher: String,
     uid: Number,
     title: String,
     price: Number,
