@@ -40,13 +40,11 @@ export default {
     async onSubmit () {
       try {
         let loginResult = await this.login({ idname: this.idname, password: this.password })
-        console.log(loginResult)
         if (loginResult) {
-          console.log('success')
           this.$router.push({ path: '/' })
         }
       } catch (err) {
-        console.log('failed')
+        this.$toast.info('ID or password is wrong')
       }
     },
     moveToSignUp: function () {

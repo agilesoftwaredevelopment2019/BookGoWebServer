@@ -2,7 +2,7 @@
   <v-layout class="v-layout align-center justify-center" mt-2>
     <v-flex xs11>
       <div>
-        <div id="fixed_components">
+        <div id="fixed_top">
           <AlarmBar/>
           <p style="font-size:24px;" align="center">
             북고나라
@@ -97,6 +97,6 @@ export default {
     position : fixed;
     bottom : 0;
     width: 100%;
-    height:40px;
+    height:60px;
   }
 </style>
