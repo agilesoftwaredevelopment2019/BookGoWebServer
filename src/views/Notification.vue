@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     home: function () {
-      this.$router.push({ path: 'home' })
+      this.$router.push({ path: '/' })
     }
   },
   components: {

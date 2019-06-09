@@ -12,18 +12,13 @@
               {{ title }}
             </v-flex>
             <v-flex xs3>
-              {{ author}}
+              {{ author }}
             </v-flex>
             <v-flex xs3>
-              {{ publisher}}
-            <v-flex xs7>
-              {{ description }}
+              {{ publisher }}
             </v-flex>
             <v-flex xs2>
               {{ price }}
-            </v-flex>
-            <v-flex xs7>
-              description
             </v-flex>
           </v-layout>
         </v-flex>

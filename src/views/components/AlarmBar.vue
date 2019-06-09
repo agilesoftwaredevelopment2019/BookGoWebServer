@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     notification: function () {
-      this.$router.push({ path: 'notification' })
+      this.$router.push({ path: '/notification' })
     }
   },
   components: {

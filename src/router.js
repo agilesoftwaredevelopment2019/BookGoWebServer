@@ -45,6 +45,8 @@ export default new Router({
       path: '/buy',
       name: 'buy',
       component: Buy
+    },
+    {
       path: '/search',
       name: 'search',
       component: Search

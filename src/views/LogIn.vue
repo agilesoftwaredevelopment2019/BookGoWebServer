@@ -5,7 +5,6 @@
         v-model="idname"
         label="ID를 입력하세요"
         required
-        v-on:keyup.enter="onSubmit"
       ></v-text-field>
       <v-text-field
         v-model="password"
@@ -26,6 +25,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'Login',
@@ -36,22 +36,27 @@ export default {
     }
   },
   methods: {
-    onSubmit: function () {
-      this.$store.dispatch('try_sign_in_and_get_status', {
-        idname: this.idname,
-        password: this.password
-      }).then(() => {
-          if ( this.$store.login != true ){
-            this.$router.replace({ path: '/' })
-          } else {
-            this.$router.replace({ path: '/' })
-          }
+    ...mapActions(['login']),
+    async onSubmit () {
+      try {
+        let loginResult = await this.login({ idname: this.idname, password: this.password })
+        console.log(loginResult)
+        if (loginResult) {
+          console.log('success')
+          this.$router.push({ path: '/' })
         }
-      )
+      } catch (err) {
+        console.log('failed')
+      }
     },
     moveToSignUp: function () {
       this.$router.push({ path: 'signup' })
     }
+  },
+  computed: {
+    ...mapGetters({
+      errorState: 'getErrorState'
+    })
   }
 }
 </script>

@@ -27,7 +27,7 @@
           </v-btn>
         </div>
         <div v-else>
-          <v-btn v-on:click="moveToLogIn" block color="blue">
+          <v-btn v-on:click="moveToMyPage" block color="blue">
             마이 페이지
           </v-btn>
         </div>
@@ -72,7 +72,10 @@ export default {
       }
     },
     moveToLogIn: function () {
-      this.$router.push({ path: 'login' })
+      this.$router.push({ path: '/login' })
+    },
+    moveToMyPage: function () {
+      this.$router.push({ path: '/mypage' })
     }
   },
   beforeMount () {

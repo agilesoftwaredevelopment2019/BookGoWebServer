@@ -1,0 +1,6 @@
+export const UID = 'UID'
+export const IDNAME = 'IDNAME'
+export const NICKNAME = 'NICKNAME'
+export const IS_AUTH = 'IS_AUTH'
+export const LOGIN = 'LOGIN'
+export const ERROR_STATE = 'ERROR_STATE'
