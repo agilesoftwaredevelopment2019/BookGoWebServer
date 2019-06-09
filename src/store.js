@@ -11,7 +11,14 @@ const state = {
   errorState: '',
   isAuth: false,
   nickname: '',
-  login: false
+  login: false,
+  item: {
+    uid: '',
+    title: '',
+    seller_id: '',
+    book_id: '',
+    author: ''
+  }
 }
 
 export default new Vuex.Store({

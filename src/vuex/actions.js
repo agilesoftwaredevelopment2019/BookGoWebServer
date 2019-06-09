@@ -1,4 +1,4 @@
-import { UID, IDNAME, NICKNAME, IS_AUTH, LOGIN, ERROR_STATE } from './mutation_types'
+import { UID, IDNAME, NICKNAME, IS_AUTH, LOGIN, ERROR_STATE, ITEM } from './mutation_types'
 import axios from 'axios'
 
 const getUserInfo = (idname, password) => {
@@ -32,6 +32,10 @@ let setErrorState = ({ commit }, data) => {
   commit(ERROR_STATE, data)
 }
 
+let setItem = ({ commit }, data) => {
+  commit(ITEM, data)
+}
+
 let processResponse = (store, loginResponse) => {
   if (loginResponse.data.length === 0) {
     setErrorState(store, 'Wrong ID or Password')
@@ -49,5 +53,9 @@ export default {
     let loginResponse = await getUserInfo(idname, password)
     processResponse(store, loginResponse)
     return store.getters.getLogin
+  },
+  setItemInfo (store, { title, author, publisher, uid, price, sellerId, description }) {
+    let item = { title, author, publisher, uid, price, sellerId, description }
+    setItem(store, item)
   }
 }

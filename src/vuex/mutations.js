@@ -1,4 +1,4 @@
-import { UID, IDNAME, NICKNAME, IS_AUTH, LOGIN, ERROR_STATE } from './mutation_types'
+import { UID, IDNAME, NICKNAME, IS_AUTH, LOGIN, ERROR_STATE, ITEM } from './mutation_types'
 
 export default {
   [UID] (state, uid) {
@@ -18,5 +18,8 @@ export default {
   },
   [ERROR_STATE] (state, errorState) {
     state.errorState = errorState
+  },
+  [ITEM] (state, item) {
+    state.item = item
   }
 }

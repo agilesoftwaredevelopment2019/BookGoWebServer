@@ -5,7 +5,6 @@
         v-model="idname"
         label="연락처 (핸드폰번호)"
         required
-        v-on:keyup.enter="onSubmit"
       ></v-text-field>
       <v-text-field
         v-model="idname"

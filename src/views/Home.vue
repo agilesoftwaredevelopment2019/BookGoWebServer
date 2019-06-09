@@ -55,8 +55,8 @@ export default {
       try {
         let productData = await axios.get('https://bookgo.herokuapp.com/products')
         const items = productData.data
-        let items_with_title = await this.getBookTitle (items)
-        this.items = items_with_title
+        let itemsWithTitle = await this.getBookTitle(items)
+        this.items = itemsWithTitle
       } catch (err) {
         this.$toast.error('Failed to get data from server')
       }
@@ -64,9 +64,9 @@ export default {
     async getBookTitle (items) {
       var itemLength = items.length
       for (var i = 0; i < itemLength; i++) {
-        let book_id = items[i].book_id
-        let book_info = await axios.get('https://bookgo.herokuapp.com/books/' + book_id)
-        items[i].title = book_info.data.title
+        let bookId = items[i].book_id
+        let bookInfo = await axios.get('https://bookgo.herokuapp.com/books/' + bookId)
+        items[i].title = bookInfo.data.title
       }
       return items
     },

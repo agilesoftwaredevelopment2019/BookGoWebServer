@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container mb-2 class="indigo lighten-4">
+    <v-container v-on:click="moveToBook" mb-2 class="blue lighten-4">
       <v-layout>
         <v-flex xs5>
           <v-img height="150px" width="150px" src="https://picsum.photos/500/300?image=15">
@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'ProductData',
   data () {
@@ -35,16 +37,20 @@ export default {
     }
   },
   props: {
-    bookname: String,
+    title: String,
     author: String,
     publisher: String,
     uid: Number,
-    title: String,
     price: Number,
-    seller_id: Number,
+    sellerId: Number,
     description: String
   },
   methods: {
+    ...mapActions(['setItemInfo']),
+    moveToBook () {
+      this.setItemInfo({ title: this.title, author: this.author, publisher: this.publisher, uid: this.uid, price: this.price, sellerId: this.sellerId, description: this.description })
+      this.$router.push({ path: '/book' })
+    }
   },
   components: {
   }

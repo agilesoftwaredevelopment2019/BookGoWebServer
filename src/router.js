@@ -39,7 +39,8 @@ export default new Router({
     {
       path: '/book',
       name: 'book',
-      component: Book
+      component: Book,
+      props: true
     },
     {
       path: '/buy',
