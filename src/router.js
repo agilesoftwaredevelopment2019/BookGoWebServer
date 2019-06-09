@@ -6,6 +6,7 @@ import SignUp from './views/SignUp.vue'
 import Notification from './views/Notification.vue'
 import Book from './views/Book.vue'
 import Buy from './views/Buy.vue'
+import Search from './views/Search.vue'
 
 Vue.use(Router)
 
@@ -14,7 +15,7 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/home',
+      path: '/',
       name: 'home',
       component: Home
     },
@@ -42,6 +43,9 @@ export default new Router({
       path: '/buy',
       name: 'buy',
       component: Buy
+      path: '/search',
+      name: 'search',
+      component: Search
     }
   ]
 })

@@ -9,13 +9,15 @@
         <v-flex xs7 d-flex>
           <v-layout align-center justify-center column wrap>
             <v-flex xs3>
-              {{ bookname }}
+              {{ title }}
             </v-flex>
             <v-flex xs3>
               {{ author}}
             </v-flex>
             <v-flex xs3>
               {{ publisher}}
+            <v-flex xs7>
+              {{ description }}
             </v-flex>
             <v-flex xs2>
               {{ price }}
@@ -41,8 +43,11 @@ export default {
     bookname: String,
     author: String,
     publisher: String,
+    uid: Number,
+    title: String,
     price: Number,
-    seller_id: Number
+    seller_id: Number,
+    description: String
   },
   methods: {
   },
