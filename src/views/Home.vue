@@ -51,25 +51,24 @@ export default {
     ProductData
   },
   methods: {
-    getProductData: function () {
-      axios.get('https://bookgo.herokuapp.com/products', {
-      }).then(res => {
-        console.log(res.data)
-        this.items = res.data
-        this.getBookTitle()
-      })
-    },
-    getBookTitle: function () {
-      var itemLength = this.items.length
-      for (var i = 0; i < itemLength; i++) {
-        // console.log(this.items[i])
-        axios.get('https://bookgo.herokuapp.com/books/' + this.items[i].book_id, {
-        }).then(res => {
-          this.items[this.cnt].title = res.data.title
-          this.cnt++
-          this.$forceUpdate()
-        })
+    async getProductData () {
+      try {
+        let productData = await axios.get('https://bookgo.herokuapp.com/products')
+        const items = productData.data
+        let items_with_title = await this.getBookTitle (items)
+        this.items = items_with_title
+      } catch (err) {
+        this.$toast.error('Failed to get data from server')
       }
+    },
+    async getBookTitle (items) {
+      var itemLength = items.length
+      for (var i = 0; i < itemLength; i++) {
+        let book_id = items[i].book_id
+        let book_info = await axios.get('https://bookgo.herokuapp.com/books/' + book_id)
+        items[i].title = book_info.data.title
+      }
+      return items
     },
     moveToLogIn: function () {
       this.$router.push({ path: '/login' })
