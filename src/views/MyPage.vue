@@ -16,7 +16,7 @@
             구매신청
           </v-tab>
           <v-tab-item>
-            <div id="product_data_list">
+            <div id="interested_list">
               <ProductData
                 v-for="(bookname, price, seller_id) in items"
                 v-bind:bookname="bookname"
@@ -83,6 +83,7 @@ export default {
   methods: {
     async getProductData () {
       try {
+        let uid = this.$store.state.uid
         let productData = await axios.get('https://bookgo.herokuapp.com/interests')
         const items = productData.data
         let itemsWithTitle = await this.getBookTitle(items)
