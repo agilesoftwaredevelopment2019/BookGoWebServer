@@ -7,11 +7,6 @@
             {{ registeredBookname }} 에 대해 구매신청이 들어왔습니다.
           </v-card>
         </v-flex>
-        <v-flex xs5>
-          <v-card color="skyblue">
-            관심상품 {{ interestedBookname }} 이 등록되었습니다.
-          </v-card>
-        </v-flex>
       </v-layout>
     </v-container>
   </div>
@@ -20,13 +15,14 @@
 <script>
 export default {
   name: 'Noti',
+  created () {
+  },
   data () {
     return {
     }
   },
   props: {
-    registeredBookname: String,
-    interestedBookname: String
+    registeredBookname: String
   },
   methods: {
   },

@@ -6,18 +6,10 @@
       </p>
       <div align="center">
         <Noti
-          v-for="(registeredBookname) in items"
-          v-bind:registeredBookname="registeredBookname"
-          v-bind:key="registeredBookname.id">
+          v-for="(item, index) in items"
+          v-bind:registeredBookname=item.title
+          v-bind:key=index>
         </Noti>
-        <Noti
-          v-for="(interestedBookname) in items"
-          v-bind:interestedBookname="interestedBookname"
-          v-bind:key="interestedBookname.id">
-        </Noti>
-        <p align="right">
-          {{ datetime }}
-        </p>
       </div>
       <div class="text-xs-center">
         <v-btn v-on:click="home" round color="primary" dark>
@@ -29,24 +21,40 @@
 </template>
 
 <script>
-
+import axios from 'axios'
 import Noti from './components/Noti.vue'
 
 export default {
   name: 'Notification',
+  async created () {
+    if (!this.$store.state.login) {
+      this.$router.push({ path: '/login' })
+    }
+  },
   data () {
     return {
       idname: '',
-      password: ''
+      password: '',
+      items: []
     }
   },
   props: {
-    datetime: Number
   },
   methods: {
     home: function () {
       this.$router.push({ path: '/' })
+    },
+    async getNoti () {
+      try {
+        const response = await axios.get('https://bookgo.herokuapp.com/transactions/seller_id/' + this.$store.state.uid)
+        this.items = response.data
+      } catch (err) {
+        this.$toast.error('Failed to get data from server')
+      }
     }
+  },
+  beforeMount () {
+    this.getNoti()
   },
   components: {
     Noti
