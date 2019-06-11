@@ -50,11 +50,12 @@
           </v-tab-item>
         </v-tabs>
       </div>
-      <footer class="footer">
-        <v-btn v-on:click="moveToRegister" block color="blue">
-          판매할 상품 등록하기
-        </v-btn>
-      </footer>
+      <v-btn v-on:click="moveToRegister" round color="primary" dark>
+        판매할 상품 등록하기
+      </v-btn>
+      <v-btn v-on:click="home" round color="primary" dark>
+        홈으로
+      </v-btn>
     </v-flex>
   </v-layout>
 </template>
@@ -81,9 +82,11 @@ export default {
     }
   },
   methods: {
+    async home () {
+      this.$router.push({ path: '/' })
+    },
     async getProductData () {
       try {
-        let uid = this.$store.state.uid
         let productData = await axios.get('https://bookgo.herokuapp.com/interests')
         const items = productData.data
         let itemsWithTitle = await this.getBookTitle(items)
