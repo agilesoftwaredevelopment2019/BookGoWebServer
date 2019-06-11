@@ -1,4 +1,4 @@
-import { UID, IDNAME, NICKNAME, IS_AUTH, LOGIN, ERROR_STATE, ITEM } from './mutation_types'
+import { UID, IDNAME, NICKNAME, IS_AUTH, LOGIN, ITEM } from './mutation_types'
 import axios from 'axios'
 
 const getUserInfo = (idname, password) => {
