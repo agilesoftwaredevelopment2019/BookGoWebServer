@@ -83,7 +83,6 @@ export default {
   methods: {
     async getProductData () {
       try {
-        let uid = this.$store.state.uid
         let productData = await axios.get('https://bookgo.herokuapp.com/interests')
         const items = productData.data
         let itemsWithTitle = await this.getBookTitle(items)
