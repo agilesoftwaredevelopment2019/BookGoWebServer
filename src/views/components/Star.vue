@@ -30,7 +30,7 @@ export default {
         let response = await axios.get('https://bookgo.herokuapp.com/interests/' + uid)
         window.console.log(response)
         const f = response.data.find((element) => {
-          return element.book_id === this.$store.state.item.uid
+          return element.book_id === this.$store.state.item.book_id
         })
         this.isInterested = f !== undefined
       } catch (err) {
