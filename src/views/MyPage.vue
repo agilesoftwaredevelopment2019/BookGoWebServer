@@ -63,6 +63,7 @@
 <script>
 
 import SearchBar from './components/SearchBar.vue'
+import ProductData from './components/ProductData.vue'
 import axios from 'axios'
 
 export default {
@@ -70,24 +71,37 @@ export default {
   components: {
     SearchBar
   },
-  items: {
-    bookname: 'test',
-    price: 3000,
-    seller_id: 12,
-    id: 1
-  },
   data () {
     return {
-
     }
   },
   methods: {
     async home () {
       this.$router.push({ path: '/' })
     },
-    async getProductData () {
+    async getInterestedData () {
       try {
-        let productData = await axios.get('https://bookgo.herokuapp.com/interests')
+        let productData = await axios.get('https://bookgo.herokuapp.com/products/user_interest/' + this.$store.state.uid)
+        const items = productData.data
+        let itemsWithTitle = await this.getBookTitle(items)
+        this.items = itemsWithTitle
+      } catch (err) {
+        this.$toast.error('Failed to get data from server')
+      }
+    },
+    async getSellingData () {
+      try {
+        let productData = await axios.get('https://bookgo.herokuapp.com/products/seller_id/{{uid}}' + this.$store.state.uid)
+        const items = productData.data
+        let itemsWithTitle = await this.getBookTitle(items)
+        this.items = itemsWithTitle
+      } catch (err) {
+        this.$toast.error('Failed to get data from server')
+      }
+    },
+    async getBuyingData () {
+      try {
+        let productData = await axios.get('https://bookgo.herokuapp.com/products/buyer_id/{{uid}}' + this.$store.state.uid)
         const items = productData.data
         let itemsWithTitle = await this.getBookTitle(items)
         this.items = itemsWithTitle
@@ -99,7 +113,7 @@ export default {
       var itemLength = items.length
       for (var i = 0; i < itemLength; i++) {
         let bookId = items[i].book_id
-        let bookInfo = await axios.get('https://bookgo.herokuapp.com/interests/' + bookId)
+        let bookInfo = await axios.get('https://bookgo.herokuapp.com/books/' + bookId)
         items[i].title = bookInfo.data.title
       }
       return items

@@ -27,16 +27,10 @@ export default {
   components: {
     SearchBar
   },
-  items: {
-    bookname: 'test',
-    price: 3000,
-    seller_id: 12,
-    id: 1
-  },
   methods: {
     async getProductData () {
       try {
-        let productData = await axios.get('https://bookgo.herokuapp.com/books')
+        let productData = await axios.get('https://bookgo.herokuapp.com/products')
         const items = productData.data
         let itemsWithTitle = await this.getBookTitle(items)
         this.items = itemsWithTitle
