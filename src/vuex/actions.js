@@ -28,17 +28,14 @@ let setLogin = ({ commit }, data) => {
   commit(LOGIN, data)
 }
 
-let setErrorState = ({ commit }, data) => {
-  commit(ERROR_STATE, data)
-}
-
 let setItem = ({ commit }, data) => {
   commit(ITEM, data)
 }
 
 let processResponse = (store, loginResponse) => {
-  if (loginResponse.data.length === 0) {
-    setErrorState(store, 'Wrong ID or Password')
+  console.log(loginResponse.data.result)
+  if (loginResponse.data.result === 'WRONG_PASSWORD') {
+    this.$toast.error('ID or password is wrong')
   } else {
     setUID(store, loginResponse.data.uid)
     setIdName(store, loginResponse.data.idname)
