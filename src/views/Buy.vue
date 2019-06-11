@@ -23,6 +23,9 @@
           <v-btn v-on:click="requestContract" round color="primary" dark>
             구매 신청하기
           </v-btn>
+          <v-btn v-on:click="home" round color="primary" dark>
+            홈으로
+          </v-btn>
         </v-flex>
       </v-layout>
     </v-flex>
@@ -48,6 +51,9 @@ export default {
     }
   },
   methods: {
+    async home () {
+      this.$router.push({ path: '/' })
+    },
     async requestContract () {
       try {
         let transactionResponse = await axios.post('https://bookgo.herokuapp.com/transactions', {
