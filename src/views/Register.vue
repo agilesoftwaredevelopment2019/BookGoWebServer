@@ -56,7 +56,7 @@ export default {
         price: this.price,
         publisher: this.publisher,
         details: this.details
-      }).then(() => this.$router.replace({ path: '/home' })
+      }).then(() => this.$router.replace({ path: '/mypage' })
       )
     }
   }

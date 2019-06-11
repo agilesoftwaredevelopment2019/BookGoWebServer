@@ -20,6 +20,8 @@
 <script>
 
 import SearchBar from './components/SearchBar.vue'
+import axios from 'axios'
+
 export default {
   name: 'Search',
   components: {
@@ -30,6 +32,27 @@ export default {
     price: 3000,
     seller_id: 12,
     id: 1
+  },
+  methods: {
+    async getProductData () {
+      try {
+        let productData = await axios.get('https://bookgo.herokuapp.com/books')
+        const items = productData.data
+        let itemsWithTitle = await this.getBookTitle(items)
+        this.items = itemsWithTitle
+      } catch (err) {
+        this.$toast.error('Failed to get data from server')
+      }
+    },
+    async getBookTitle (items) {
+      var itemLength = items.length
+      for (var i = 0; i < itemLength; i++) {
+        let bookId = items[i].book_id
+        let bookInfo = await axios.get('https://bookgo.herokuapp.com/books/' + bookId)
+        items[i].title = bookInfo.data.title
+      }
+      return items
+    }
   },
   data () {
     return {
