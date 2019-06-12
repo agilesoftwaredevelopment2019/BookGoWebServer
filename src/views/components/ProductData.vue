@@ -37,11 +37,14 @@ export default {
     }
   },
   props: {
-    book_id: Number,
-    seller_id: Number,
+    title: String,
     price: Number,
+    seller_id: Number,
+    author: String,
+    publisher: String,
     description: String,
-    image_path: String
+    image_path: String,
+    product_id: Number
   },
   methods: {
     ...mapActions(['setItemInfo']),
