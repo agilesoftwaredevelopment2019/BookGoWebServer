@@ -50,7 +50,7 @@ export default {
         } else {
           await axios.post('https://bookgo.herokuapp.com/interests', {
             user_id: this.$store.state.uid,
-            book_id: this.$store.state.item.book_id
+            product_id: this.$store.state.item.book_id
           })
           this.$toast.info('관심상품이 등록되었습니다')
         }
