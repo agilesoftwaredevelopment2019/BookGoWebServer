@@ -18,33 +18,16 @@
           <v-tab-item>
             <div id="interested_list">
               <ProductData
-                v-for="(bookname, price, seller_id) in items"
-                v-bind:bookname="bookname"
-                v-bind:price="price"
-                v-bind:seller_id="seller_id"
-                v-bind:key="bookname.id">
-              </ProductData>
-            </div>
-          </v-tab-item>
-          <v-tab-item>
-            <div id="product_data_list">
-              <ProductData
-                v-for="(bookname, price, seller_id) in items"
-                v-bind:bookname="bookname"
-                v-bind:price="price"
-                v-bind:seller_id="seller_id"
-                v-bind:key="bookname.id">
-              </ProductData>
-            </div>
-          </v-tab-item>
-          <v-tab-item>
-            <div id="product_data_list">
-              <ProductData
-                v-for="(bookname, price, seller_id) in items"
-                v-bind:bookname="bookname"
-                v-bind:price="price"
-                v-bind:seller_id="seller_id"
-                v-bind:key="bookname.id">
+                v-for="(item, index) in items"
+                v-bind:title=item.title
+                v-bind:price=item.price
+                v-bind:seller_id=item.seller_id
+                v-bind:author=item.author
+                v-bind:publisher=item.publisher
+                v-bind:description=item.description
+                v-bind:image_path=item.image_path
+                v-bind:product_id=item.product_id
+                v-bind:key=index>
               </ProductData>
             </div>
           </v-tab-item>
@@ -66,26 +49,26 @@ import SearchBar from './components/SearchBar.vue'
 import axios from 'axios'
 
 export default {
-  name: 'Search',
+  name: 'MyPage',
+  async created () {
+    if (!this.$store.state.login) {
+      this.$router.push({ path: '/login' })
+    }
+  },
   components: {
     SearchBar
   },
-  items: {
-    bookname: 'test',
-    price: 3000,
-    seller_id: 12,
-    id: 1
-  },
   data () {
     return {
-
+      items: [
+      ]
     }
   },
   methods: {
     async home () {
       this.$router.push({ path: '/' })
     },
-    async getProductData () {
+    async getInterestedProduct () {
       try {
         let productData = await axios.get('https://bookgo.herokuapp.com/interests')
         const items = productData.data
