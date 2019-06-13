@@ -11,58 +11,64 @@
             관심상품
           </v-tab>
           <v-tab-item>
-            <div id="interested_list">
-              <ProductData
-                v-for="(item, index) in items"
-                v-bind:title=item.title
-                v-bind:price=item.price
-                v-bind:seller_id=item.seller_id
-                v-bind:author=item.author
-                v-bind:publisher=item.publisher
-                v-bind:description=item.description
-                v-bind:image_path=item.image_path
-                v-bind:product_id=item.product_id
-                v-bind:key=index>
-              </ProductData>
-            </div>
+            <template v-if="this.items !== ''">
+              <div id="interested_lsit">
+                <ProductData
+                  v-for="(item, index) in items"
+                  v-bind:title=item.title
+                  v-bind:price=item.price
+                  v-bind:seller_id=item.seller_id
+                  v-bind:author=item.author
+                  v-bind:publisher=item.publisher
+                  v-bind:description=item.description
+                  v-bind:image_path=item.image_path
+                  v-bind:product_id=item.product_id
+                  v-bind:key=index>
+                </ProductData>
+              </div>
+            </template>
           </v-tab-item>
           <v-tab>
             판매중
           </v-tab>
           <v-tab-item>
-            <div id="interested_list">
-              <ProductData
-                v-for="(item, index) in items_sale"
-                v-bind:title=item.title
-                v-bind:price=item.price
-                v-bind:seller_id=item.seller_id
-                v-bind:author=item.author
-                v-bind:publisher=item.publisher
-                v-bind:description=item.description
-                v-bind:image_path=item.image_path
-                v-bind:product_id=item.product_id
-                v-bind:key=index>
-              </ProductData>
-            </div>
+            <template v-if="this.items_sale !== ''">
+              <div id="interested_list">
+                <ProductData
+                  v-for="(item, index) in items_sale"
+                  v-bind:title=item.title
+                  v-bind:price=item.price
+                  v-bind:seller_id=item.seller_id
+                  v-bind:author=item.author
+                  v-bind:publisher=item.publisher
+                  v-bind:description=item.description
+                  v-bind:image_path=item.image_path
+                  v-bind:product_id=item.product_id
+                  v-bind:key=index>
+                </ProductData>
+              </div>
+            </template>
           </v-tab-item>
           <v-tab>
             구매신청
           </v-tab>
           <v-tab-item>
-            <div id="interested_list">
-              <ProductData
-                v-for="(item, index) in items_buy"
-                v-bind:title=item.title
-                v-bind:price=item.price
-                v-bind:seller_id=item.seller_id
-                v-bind:author=item.author
-                v-bind:publisher=item.publisher
-                v-bind:description=item.description
-                v-bind:image_path=item.image_path
-                v-bind:product_id=item.product_id
-                v-bind:key=index>
-              </ProductData>
-            </div>
+            <template v-if="this.items_buy !== ''">
+              <div id="interested_list">
+                <ProductData
+                  v-for="(item, index) in items_buy"
+                  v-bind:title=item.title
+                  v-bind:price=item.price
+                  v-bind:seller_id=item.seller_id
+                  v-bind:author=item.author
+                  v-bind:publisher=item.publisher
+                  v-bind:description=item.description
+                  v-bind:image_path=item.image_path
+                  v-bind:product_id=item.product_id
+                  v-bind:key=index>
+                </ProductData>
+              </div>
+            </template>
           </v-tab-item>
         </v-tabs>
       </div>
@@ -113,7 +119,11 @@ export default {
     async getInterestedData () {
       try {
         let productData = await axios.get('https://bookgo.herokuapp.com/products/user_interest/' + this.$store.state.uid)
-        this.items = productData.data
+        if (productData.data.result !== 'NOT_FOUND') {
+          this.items = productData.data
+        } else {
+          this.items = ''
+        }
       } catch (err) {
         this.$toast.error('Failed to get data from server')
       }
@@ -121,7 +131,11 @@ export default {
     async getSellingData () {
       try {
         let productData = await axios.get('https://bookgo.herokuapp.com/products/seller_id/' + this.$store.state.uid)
-        this.items_sale = productData.data
+        if (productData.data.result !== 'NOT_FOUND') {
+          this.items_sale = productData.data
+        } else {
+          this.items_sale = ''
+        }
       } catch (err) {
         this.$toast.error('Failed to get data from server')
       }
@@ -129,7 +143,11 @@ export default {
     async getBuyingData () {
       try {
         let productData = await axios.get('https://bookgo.herokuapp.com/products/buyer_id/' + this.$store.state.uid)
-        this.items_buy = productData.data
+        if (productData.data.result !== 'NOT_FOUND') {
+          this.items_sale = productData.data
+        } else {
+          this.items_sale = ''
+        }
       } catch (err) {
         this.$toast.error('Failed to get data from server')
       }
