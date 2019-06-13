@@ -35,10 +35,36 @@
             </div>
           </v-tab-item>
           <v-tab-item>
-            sale
+            <div id="interested_list">
+              <ProductData
+                v-for="(item, index) in items_sale"
+                v-bind:title=item.title
+                v-bind:price=item.price
+                v-bind:seller_id=item.seller_id
+                v-bind:author=item.author
+                v-bind:publisher=item.publisher
+                v-bind:description=item.description
+                v-bind:image_path=item.image_path
+                v-bind:product_id=item.product_id
+                v-bind:key=index>
+              </ProductData>
+            </div>
           </v-tab-item>
           <v-tab-item>
-            buy
+            <div id="interested_list">
+              <ProductData
+                v-for="(item, index) in items_buy"
+                v-bind:title=item.title
+                v-bind:price=item.price
+                v-bind:seller_id=item.seller_id
+                v-bind:author=item.author
+                v-bind:publisher=item.publisher
+                v-bind:description=item.description
+                v-bind:image_path=item.image_path
+                v-bind:product_id=item.product_id
+                v-bind:key=index>
+              </ProductData>
+            </div>
           </v-tab-item>
         </v-tabs-items>
       </div>
@@ -73,11 +99,16 @@ export default {
   data () {
     return {
       items: [
-      ]
+      ],
+      items_sale: [
+      ],
+      items_buy: []
     }
   },
   beforeMount () {
     this.getInterestedData()
+    this.getSellingData()
+    this.getBuyingData()
   },
   methods: {
     async getInterestedData () {
@@ -91,9 +122,7 @@ export default {
     async getSellingData () {
       try {
         let productData = await axios.get('https://bookgo.herokuapp.com/products/seller_id/' + this.$store.state.uid)
-        const items = productData.data
-        let itemsWithTitle = await this.getBookTitle(items)
-        this.items = itemsWithTitle
+        this.items_sale = productData.data
       } catch (err) {
         this.$toast.error('Failed to get data from server')
       }
@@ -101,9 +130,7 @@ export default {
     async getBuyingData () {
       try {
         let productData = await axios.get('https://bookgo.herokuapp.com/products/buyer_id/' + this.$store.state.uid)
-        const items = productData.data
-        let itemsWithTitle = await this.getBookTitle(items)
-        this.items = itemsWithTitle
+        this.items_buy = productData.data
       } catch (err) {
         this.$toast.error('Failed to get data from server')
       }

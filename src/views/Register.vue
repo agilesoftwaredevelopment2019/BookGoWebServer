@@ -12,16 +12,6 @@
         <option>타이포그래피 교과서</option>
       </select>
       <v-text-field
-        v-model="author"
-        label="저자 이름"
-        required
-      ></v-text-field>
-      <v-text-field
-        v-model="publisher"
-        label="출판사"
-        required
-      ></v-text-field>
-      <v-text-field
         v-model="price"
         label="가격"
         required
