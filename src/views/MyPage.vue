@@ -89,6 +89,9 @@ export default {
     if (!this.$store.state.login) {
       this.$router.push({ path: '/login' })
     }
+    this.getInterestedData()
+    this.getSellingData()
+    this.getBuyingData()
   },
   components: {
     SearchBar,
@@ -105,9 +108,6 @@ export default {
     }
   },
   beforeMount () {
-    this.getInterestedData()
-    this.getSellingData()
-    this.getBuyingData()
   },
   methods: {
     async getInterestedData () {
@@ -122,6 +122,7 @@ export default {
       try {
         let productData = await axios.get('https://bookgo.herokuapp.com/products/seller_id/' + this.$store.state.uid)
         this.items_sale = productData.data
+        console.log(productData)
       } catch (err) {
         this.$toast.error('Failed to get data from server')
       }
