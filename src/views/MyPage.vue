@@ -12,7 +12,7 @@
           </v-tab>
           <v-tab-item>
             <template v-if="this.items !== ''">
-              <div id="interested_lsit">
+              <div id="interested_list">
                 <ProductData
                   v-for="(item, index) in items"
                   v-bind:title=item.title
@@ -122,8 +122,7 @@ export default {
         if (productData.data.length === 0) {
           console.log('no Interest Data')
           this.items = ''
-        }
-        else if (productData.data.result !== 'NOT_FOUND') {
+        } else if (productData.data.result !== 'NOT_FOUND') {
           console.log('get interest data')
           console.log(productData.data)
           this.items = productData.data
