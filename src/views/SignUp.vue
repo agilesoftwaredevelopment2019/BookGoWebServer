@@ -75,7 +75,7 @@ export default {
         phonenumber: this.phonenumber
       })
       if (response.data.length === 0) {
-        console.log('SERVER failed')
+        this.$toast.error('SERVER failed')
       } else {
         this.$router.push({ path: '/login' })
       }

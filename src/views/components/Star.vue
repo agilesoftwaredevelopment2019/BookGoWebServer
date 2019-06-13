@@ -28,7 +28,6 @@ export default {
       try {
         let uid = this.$store.state.uid
         let response = await axios.get('https://bookgo.herokuapp.com/interests/' + uid)
-        window.console.log(response)
         const f = response.data.find((element) => {
           return element.product_id === this.$store.state.item.uid
         })
