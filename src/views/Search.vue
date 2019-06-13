@@ -42,20 +42,17 @@
 
 <script>
 
-import SearchBar from './components/SearchBar.vue'
 import ProductData from './components/ProductData.vue'
-import axios from 'axios'
 
 export default {
   name: 'Search',
   components: {
-    SearchBar,
     ProductData
   },
   methods: {
     home () {
       this.$router.push({ path: '/' })
-    },
+    }
   },
   beforeMount () {
     if (this.$route.params.data.result !== 'NOT_FOUND') {

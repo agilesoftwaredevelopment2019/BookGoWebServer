@@ -31,13 +31,12 @@ export default {
     }
   },
   methods: {
-    async search() {
-      let encoded_title = encodeURIComponent(encodeURIComponent(this.title))
-      let response = await axios.get('https://bookgo.herokuapp.com/products/title/' + encoded_title)
-      if (response){
+    async search () {
+      let encodedTitle = encodeURIComponent(encodeURIComponent(this.title))
+      let response = await axios.get('https://bookgo.herokuapp.com/products/title/' + encodedTitle)
+      if (response) {
         this.$router.push({ name: 'search', params: response })
       }
-
     }
   },
   components: {
