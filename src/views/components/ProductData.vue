@@ -33,7 +33,7 @@
               가격 : {{ price }}
             </v-flex>
             <v-flex xs3>
-              {{description}}
+              설명: {{description}}
             </v-flex>
           </v-layout>
         </v-flex>

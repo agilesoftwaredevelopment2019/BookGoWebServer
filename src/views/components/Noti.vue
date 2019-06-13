@@ -49,10 +49,8 @@ export default {
       let a = res.data.find((element) => {
         return element.uid === this.product_id
       })
-      console.log(a)
       a = a.book_id
       let b = await axios.get('https://bookgo.herokuapp.com/books/' + a)
-      console.log(b)
       this.title = b.data.title
     }
   },

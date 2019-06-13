@@ -10,14 +10,6 @@
           <v-tab>
             관심상품
           </v-tab>
-          <v-tab>
-            판매중
-          </v-tab>
-          <v-tab>
-            구매신청
-          </v-tab>
-        </v-tabs>
-        <v-tabs-items>
           <v-tab-item>
             <div id="interested_list">
               <ProductData
@@ -34,6 +26,9 @@
               </ProductData>
             </div>
           </v-tab-item>
+          <v-tab>
+            판매중
+          </v-tab>
           <v-tab-item>
             <div id="interested_list">
               <ProductData
@@ -50,6 +45,9 @@
               </ProductData>
             </div>
           </v-tab-item>
+          <v-tab>
+            구매신청
+          </v-tab>
           <v-tab-item>
             <div id="interested_list">
               <ProductData
@@ -66,7 +64,7 @@
               </ProductData>
             </div>
           </v-tab-item>
-        </v-tabs-items>
+        </v-tabs>
       </div>
       <v-flex text-xs-center mt-2>
         <v-btn v-on:click="moveToRegister" round color="primary" dark>
@@ -102,7 +100,8 @@ export default {
       ],
       items_sale: [
       ],
-      items_buy: []
+      items_buy: [
+      ]
     }
   },
   beforeMount () {
