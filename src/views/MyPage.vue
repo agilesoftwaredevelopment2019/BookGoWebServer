@@ -69,21 +69,35 @@ export default {
   components: {
     SearchBar
   },
-  items: {
-    bookname: 'test',
-    price: 3000,
-    seller_id: 12,
-    id: 1
-  },
   data () {
     return {
 
     }
   },
   methods: {
-    async getProductData () {
+    async getInterestedData () {
       try {
-        let productData = await axios.get('https://bookgo.herokuapp.com/interests')
+        let productData = await axios.get('https://bookgo.herokuapp.com/products/user_interest/' + this.$store.state.uid)
+        const items = productData.data
+        let itemsWithTitle = await this.getBookTitle(items)
+        this.items = itemsWithTitle
+      } catch (err) {
+        this.$toast.error('Failed to get data from server')
+      }
+    },
+    async getSellingData () {
+      try {
+        let productData = await axios.get('https://bookgo.herokuapp.com/products/seller_id/' + this.$store.state.uid)
+        const items = productData.data
+        let itemsWithTitle = await this.getBookTitle(items)
+        this.items = itemsWithTitle
+      } catch (err) {
+        this.$toast.error('Failed to get data from server')
+      }
+    },
+    async getBuyingData () {
+      try {
+        let productData = await axios.get('https://bookgo.herokuapp.com/products/buyer_id/' + this.$store.state.uid)
         const items = productData.data
         let itemsWithTitle = await this.getBookTitle(items)
         this.items = itemsWithTitle
