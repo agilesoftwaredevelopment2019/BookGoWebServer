@@ -1,6 +1,6 @@
 <template>
   <v-layout align-center justify-center>
-    <v-flex xs12 sm6>
+    <v-flex xs11>
       <v-text-field
         v-model="idname"
         label="ID를 입력하세요"
@@ -10,6 +10,7 @@
         v-model="password"
         label="비밀번호를 입력하세요"
         required
+        type="password"
         v-on:keyup.enter="onSubmit"
       ></v-text-field>
       <div class="text-xs-center">

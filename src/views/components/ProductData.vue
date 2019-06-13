@@ -6,19 +6,21 @@
           <v-img height="150px" width="150px" src="https://picsum.photos/500/300?image=15">
           </v-img>
         </v-flex>
+        <v-flex>
+        </v-flex>
         <v-flex xs7 d-flex>
           <v-layout align-center column>
             <v-flex xs3>
-              {{ title }}
+              제목 : {{ title }}
             </v-flex>
             <v-flex xs3>
-              {{ author }}
+              작가 : {{ author }}
             </v-flex>
             <v-flex xs3>
-              {{ publisher }}
+              출판사 : {{ publisher }}
             </v-flex>
             <v-flex xs2>
-              {{ price }}
+              가격 : {{ price }}
             </v-flex>
           </v-layout>
         </v-flex>

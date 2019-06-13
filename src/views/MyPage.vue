@@ -1,6 +1,6 @@
 <template>
   <v-layout class="align-center justify-center">
-    <v-flex xs12 sm6>
+    <v-flex xs11>
       <div>
         <SearchBar/>
       </div>
