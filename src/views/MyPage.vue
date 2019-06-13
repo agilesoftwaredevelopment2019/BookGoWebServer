@@ -33,7 +33,7 @@
           </v-tab>
           <v-tab-item>
             <template v-if="this.items_sale !== ''">
-              <div id="interested_list">
+              <div id="selling_list">
                 <ProductData
                   v-for="(item, index) in items_sale"
                   v-bind:title=item.title
@@ -54,7 +54,7 @@
           </v-tab>
           <v-tab-item>
             <template v-if="this.items_buy !== ''">
-              <div id="interested_list">
+              <div id="buying_list">
                 <ProductData
                   v-for="(item, index) in items_buy"
                   v-bind:title=item.title
@@ -95,9 +95,9 @@ export default {
     if (!this.$store.state.login) {
       this.$router.push({ path: '/login' })
     }
-    this.getInterestedData()
-    this.getSellingData()
-    this.getBuyingData()
+    await this.getInterestedData()
+    await this.getSellingData()
+    await this.getBuyingData()
   },
   components: {
     SearchBar,
@@ -119,9 +119,16 @@ export default {
     async getInterestedData () {
       try {
         let productData = await axios.get('https://bookgo.herokuapp.com/products/user_interest/' + this.$store.state.uid)
-        if (productData.data.result !== 'NOT_FOUND') {
+        if (productData.data.length === 0) {
+          console.log('no Interest Data')
+          this.items = ''
+        }
+        else if (productData.data.result !== 'NOT_FOUND') {
+          console.log('get interest data')
+          console.log(productData.data)
           this.items = productData.data
         } else {
+          console.log('no Interest Data')
           this.items = ''
         }
       } catch (err) {
@@ -131,9 +138,15 @@ export default {
     async getSellingData () {
       try {
         let productData = await axios.get('https://bookgo.herokuapp.com/products/seller_id/' + this.$store.state.uid)
-        if (productData.data.result !== 'NOT_FOUND') {
+        if (productData.data.length === 0) {
+          console.log('no selling Data')
+          this.items_sale = ''
+        } else if (productData.data.result !== 'NOT_FOUND') {
+          console.log('get selling data')
+          console.log(productData.data)
           this.items_sale = productData.data
         } else {
+          console.log('no selling data')
           this.items_sale = ''
         }
       } catch (err) {
@@ -143,10 +156,16 @@ export default {
     async getBuyingData () {
       try {
         let productData = await axios.get('https://bookgo.herokuapp.com/products/buyer_id/' + this.$store.state.uid)
-        if (productData.data.result !== 'NOT_FOUND') {
-          this.items_sale = productData.data
+        if (productData.data.length === 0) {
+          console.log('no buying Data')
+          this.items_buy = ''
+        } else if (productData.data.result !== 'NOT_FOUND') {
+          console.log('get buying data')
+          console.log(productData.data)
+          this.items_buy = productData.data
         } else {
-          this.items_sale = ''
+          console.log('no buying Data')
+          this.items_buy = ''
         }
       } catch (err) {
         this.$toast.error('Failed to get data from server')
