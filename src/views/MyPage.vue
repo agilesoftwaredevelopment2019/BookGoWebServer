@@ -95,6 +95,9 @@ export default {
     if (!this.$store.state.login) {
       this.$router.push({ path: '/login' })
     }
+    this.getInterestedData()
+    this.getSellingData()
+    this.getBuyingData()
   },
   components: {
     SearchBar,
@@ -111,9 +114,6 @@ export default {
     }
   },
   beforeMount () {
-    this.getInterestedData()
-    this.getSellingData()
-    this.getBuyingData()
   },
   methods: {
     async getInterestedData () {
