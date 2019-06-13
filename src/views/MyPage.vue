@@ -122,7 +122,6 @@ export default {
       try {
         let productData = await axios.get('https://bookgo.herokuapp.com/products/seller_id/' + this.$store.state.uid)
         this.items_sale = productData.data
-        console.log(productData)
       } catch (err) {
         this.$toast.error('Failed to get data from server')
       }
