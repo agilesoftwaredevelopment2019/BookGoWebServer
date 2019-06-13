@@ -25,6 +25,9 @@
         <v-btn v-on:click="requestRegister" round color="primary" dark>
           등록하기
         </v-btn>
+        <v-btn v-on:click="home" round color="primary" dark>
+          홈으로
+        </v-btn>
       </div>
     </v-flex>
   </v-layout>
@@ -45,6 +48,9 @@ export default {
     uid: 0
   }),
   methods: {
+    async home () {
+      this.$router.push({ path: '/' })
+    },
     async requestRegister () {
       try {
         if (this.bookname === 'Hayt의 전자기학') {
