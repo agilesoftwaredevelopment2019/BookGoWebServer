@@ -16,45 +16,29 @@
             구매신청
           </v-tab>
           <v-tab-item>
-            <div id="product_data_list">
+            <div id="interested_list">
               <ProductData
-                v-for="(bookname, price, seller_id) in items"
-                v-bind:bookname="bookname"
-                v-bind:price="price"
-                v-bind:seller_id="seller_id"
-                v-bind:key="bookname.id">
-              </ProductData>
-            </div>
-          </v-tab-item>
-          <v-tab-item>
-            <div id="product_data_list">
-              <ProductData
-                v-for="(bookname, price, seller_id) in items"
-                v-bind:bookname="bookname"
-                v-bind:price="price"
-                v-bind:seller_id="seller_id"
-                v-bind:key="bookname.id">
-              </ProductData>
-            </div>
-          </v-tab-item>
-          <v-tab-item>
-            <div id="product_data_list">
-              <ProductData
-                v-for="(bookname, price, seller_id) in items"
-                v-bind:bookname="bookname"
-                v-bind:price="price"
-                v-bind:seller_id="seller_id"
-                v-bind:key="bookname.id">
+                v-for="(item, index) in items"
+                v-bind:title=item.title
+                v-bind:price=item.price
+                v-bind:seller_id=item.seller_id
+                v-bind:author=item.author
+                v-bind:publisher=item.publisher
+                v-bind:description=item.description
+                v-bind:image_path=item.image_path
+                v-bind:product_id=item.product_id
+                v-bind:key=index>
               </ProductData>
             </div>
           </v-tab-item>
         </v-tabs>
       </div>
-      <footer class="footer">
-        <v-btn v-on:click="moveToRegister" block color="blue">
-          판매할 상품 등록하기
-        </v-btn>
-      </footer>
+      <v-btn v-on:click="moveToRegister" round color="primary" dark>
+        판매할 상품 등록하기
+      </v-btn>
+      <v-btn v-on:click="home" round color="primary" dark>
+        홈으로
+      </v-btn>
     </v-flex>
   </v-layout>
 </template>
@@ -65,13 +49,19 @@ import SearchBar from './components/SearchBar.vue'
 import axios from 'axios'
 
 export default {
-  name: 'Search',
+  name: 'MyPage',
+  async created () {
+    if (!this.$store.state.login) {
+      this.$router.push({ path: '/login' })
+    }
+  },
   components: {
     SearchBar
   },
   data () {
     return {
-
+      items: [
+      ]
     }
   },
   methods: {

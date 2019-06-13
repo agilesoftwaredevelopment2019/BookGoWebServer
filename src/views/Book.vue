@@ -26,6 +26,9 @@
         <v-btn v-on:click="moveToBuy" round color="primary" dark>
           구매 신청하기
         </v-btn>
+        <v-btn v-on:click="home" round color="primary" dark>
+          홈으로
+        </v-btn>
       </div>
     </v-flex>
   </v-layout>
@@ -43,6 +46,9 @@ export default {
   methods: {
     moveToBuy: function () {
       this.$router.push({ path: 'buy' })
+    },
+    home: function () {
+      this.$router.push({ path: '/' })
     }
   },
   props: {

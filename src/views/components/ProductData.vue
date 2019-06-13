@@ -38,12 +38,13 @@ export default {
   },
   props: {
     title: String,
+    price: Number,
+    seller_id: Number,
     author: String,
     publisher: String,
-    uid: Number,
-    price: Number,
-    sellerId: Number,
-    description: String
+    description: String,
+    image_path: String,
+    product_id: Number
   },
   methods: {
     ...mapActions(['setItemInfo']),

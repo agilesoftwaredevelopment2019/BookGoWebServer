@@ -27,7 +27,7 @@
         required
       ></v-text-field>
       <div class="text-xs-center">
-        <v-btn v-on:click="onSubmit" round color="primary" dark>
+        <v-btn v-on:click="requestRegister" round color="primary" dark>
           등록하기
         </v-btn>
       </div>
@@ -37,30 +37,37 @@
 
 <script>
 
+import axios from 'axios'
+
 export default {
   name: 'Register',
-  data () {
-    return {
-      bookname: '',
-      author: '',
-      price: '',
-      publisher: '',
-      details: ''
-    }
-  },
+  data: () => ({
+    bookname: '',
+    author: '',
+    price: '',
+    publisher: '',
+    details: ''
+  }),
   methods: {
-    onSubmit: function () {
-      this.$store.dispatch('try_register', {
-        bookname: this.bookname,
-        author: this.author,
-        price: this.price,
-        publisher: this.publisher,
-        details: this.details
-      }).then(() => this.$router.replace({ path: '/mypage' })
-      )
+    async requestRegister () {
+      try {
+        await axios.post('https://bookgo.herokuapp.com/products', {
+          seller_id: this.$store.state.item.seller_id,
+          bookname: this.bookname,
+          author: this.author,
+          price: this.price,
+          publisher: this.publisher,
+          details: this.details
+        })
+        this.$toast.info('등록을 완료했습니다')
+        this.$router.push({ path: '/mypage' })
+      } catch (err) {
+        this.$toast.error('Failed to get data from server')
+      }
     }
   }
 }
+
 </script>
 
 <style>
