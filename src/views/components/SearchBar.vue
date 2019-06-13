@@ -37,6 +37,7 @@ export default {
       if (response){
         this.$router.push({ name: 'search', params: response })
       }
+
     }
   },
   components: {

@@ -64,7 +64,6 @@ export default {
           message: this.message,
           phonenumber: this.phonenumber
         })
-        console.log(transactionResponse)
         if (transactionResponse.data.result === 'CREATE') {
           this.$toast.info('구매 신청이 완료되었습니다.')
           this.$router.push({ path: '/' })

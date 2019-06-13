@@ -46,21 +46,46 @@ export default {
     author: '',
     price: '',
     publisher: '',
-    details: ''
+    details: '',
+    uid: 0
   }),
   methods: {
     async requestRegister () {
       try {
-        await axios.post('https://bookgo.herokuapp.com/products', {
-          seller_id: this.$store.state.item.seller_id,
-          bookname: this.bookname,
-          author: this.author,
+        if (this.bookname === 'Hayt의 전자기학') {
+          this.uid = 1
+        }
+        if (this.bookname === '옥스토비의 일반화학') {
+          this.uid = 2
+        }
+        if (this.bookname === 'Kreyszig 공업수학 - 하') {
+          this.uid = 3
+        }
+        if (this.bookname === 'Kreyszig 공업수학 - 상') {
+          this.uid = 4
+        }
+        if (this.bookname === '이펙티브 C++') {
+          this.uid = 5
+        }
+        if (this.bookname === '컴퓨터 구조 및 설계') {
+          this.uid = 6
+        }
+        if (this.bookname === '타이포그래피 교과서') {
+          this.uid = 7
+        }
+        let response = await axios.post('https://bookgo.herokuapp.com/products', {
+          book_id: this.uid,
+          seller_id: this.$store.state.uid,
           price: this.price,
-          publisher: this.publisher,
-          details: this.details
+          image_path: 'asdf',
+          description: this.details
         })
-        this.$toast.info('등록을 완료했습니다')
-        this.$router.push({ path: '/mypage' })
+        if (response.data.result === 'CREATE') {
+          this.$toast.info('등록을 완료했습니다')
+          this.$router.push({ path: '/mypage' })
+        } else {
+          this.$toast.error('등록되지 않았습니다')
+        }
       } catch (err) {
         this.$toast.error('Failed to get data from server')
       }

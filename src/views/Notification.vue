@@ -7,7 +7,13 @@
       <div align="center">
         <Noti
           v-for="(item, index) in items"
-          v-bind:registeredBookname=item.title
+          v-bind:buyer_id=item.buyer_id
+          v-bind:price=item.price
+          v-bind:seller_id=item.seller_id
+          v-bind:product_id=item.product_id
+          v-bind:message=item.message
+          v-bind:phonenumber=item.phonenumber
+          v-bind:transaction_uid=item.uid
           v-bind:key=index>
         </Noti>
       </div>
