@@ -60,13 +60,13 @@ export default {
         if (this.bookname === '옥스토비의 일반화학') {
           this.uid = 2
         }
-        if (this.bookname === 'Kreyszig 공업수학 - 하') {
+        if (this.bookname === 'Kreyszig 공업수학 하') {
           this.uid = 3
         }
-        if (this.bookname === 'Kreyszig 공업수학 - 상') {
+        if (this.bookname === 'Kreyszig 공업수학 상') {
           this.uid = 4
         }
-        if (this.bookname === '이펙티브 C++') {
+        if (this.bookname === '이펙티브 C') {
           this.uid = 5
         }
         if (this.bookname === '컴퓨터 구조 및 설계') {
