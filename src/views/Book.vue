@@ -29,6 +29,9 @@
             </div>
           </v-flex>
           <v-flex xs2>
+            작가 : {{ this.$store.state.item.author }}
+          </v-flex>
+          <v-flex xs2>
             출판사 : {{ this.$store.state.item.publisher }}
           </v-flex>
           <v-flex xs2>

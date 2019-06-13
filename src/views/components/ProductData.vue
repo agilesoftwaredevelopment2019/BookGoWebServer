@@ -7,7 +7,7 @@
           </v-img>
           <v-img height="150px" width="150px" v-if="title === '옥스토비의 일반화학'" src="https://image.aladin.co.kr/product/3896/57/cover150/899260372x_1.jpg">
           </v-img>
-          <v-img height="150px" width="150px" v-if="title === 'Kreyszig 공업수학 - 하 '" src="https://image.aladin.co.kr/product/1889/74/cover150/8971292482_1.jpg">
+          <v-img height="150px" width="150px" v-if="title === 'Kreyszig 공업수학 - 하'" src="https://image.aladin.co.kr/product/1889/74/cover150/8971292482_1.jpg">
           </v-img>
           <v-img height="150px" width="150px" v-if="title === 'Kreyszig 공업수학 - 상'" src="https://image.aladin.co.kr/product/1478/98/cover150/897129244x_1.jpg">
           </v-img>
@@ -20,8 +20,6 @@
         </v-flex>
         <v-flex xs7 d-flex>
           <v-layout align-center column>
-            <v-flex xs1>
-            </v-flex>
             <v-flex xs3>
               제목 : {{ title }}
             </v-flex>
@@ -31,8 +29,11 @@
             <v-flex xs3>
               출판사 : {{ publisher }}
             </v-flex>
-            <v-flex xs2>
+            <v-flex xs3>
               가격 : {{ price }}
+            </v-flex>
+            <v-flex xs3>
+              {{description}}
             </v-flex>
           </v-layout>
         </v-flex>
