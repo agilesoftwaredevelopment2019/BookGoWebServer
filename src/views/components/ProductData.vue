@@ -63,7 +63,7 @@ export default {
   methods: {
     ...mapActions(['setItemInfo']),
     moveToBook () {
-      this.setItemInfo({ title: this.title, author: this.author, publisher: this.publisher, uid: this.uid, price: this.price, sellerId: this.seller_id, description: this.description, uid: this.product_id})
+      this.setItemInfo({ title: this.title, author: this.author, publisher: this.publisher, price: this.price, sellerId: this.seller_id, description: this.description, uid: this.product_id })
       this.$router.push({ path: '/book' })
     }
   },
