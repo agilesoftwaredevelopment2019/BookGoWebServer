@@ -57,16 +57,14 @@ export default {
     async requestContract () {
       try {
         let transactionResponse = await axios.post('https://bookgo.herokuapp.com/transactions', {
-          book_id: this.$store.state.item.book_id,
+          product_id: this.$store.state.item.uid,
           buyer_id: this.$store.state.uid,
           seller_id: this.$store.state.item.seller_id,
           price: this.$store.state.item.price,
-          title: this.$store.state.item.title,
-          phonenumber: this.phonenumber,
-          description: this.description
+          message: this.description,
+          phonenumber: this.phonenumber
         })
-        console.log(transactionResponse)
-        if (transactionResponse.data.length !== 0) {
+        if (transactionResponse.data.result === 'CREATE') {
           this.$toast.info('구매 신청이 완료되었습니다.')
           this.$router.push({ path: '/' })
         } else {
