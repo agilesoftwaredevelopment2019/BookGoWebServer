@@ -44,7 +44,7 @@
 </template>
 
 <script>
-
+import ProductData from './components/ProductData.vue'
 import SearchBar from './components/SearchBar.vue'
 import axios from 'axios'
 
@@ -56,7 +56,8 @@ export default {
     }
   },
   components: {
-    SearchBar
+    SearchBar,
+    ProductData
   },
   data () {
     return {
@@ -64,13 +65,14 @@ export default {
       ]
     }
   },
+  beforeMount () {
+    this.getInterestedData()
+  },
   methods: {
     async getInterestedData () {
       try {
         let productData = await axios.get('https://bookgo.herokuapp.com/products/user_interest/' + this.$store.state.uid)
-        const items = productData.data
-        let itemsWithTitle = await this.getBookTitle(items)
-        this.items = itemsWithTitle
+        this.items = productData.data
       } catch (err) {
         this.$toast.error('Failed to get data from server')
       }
@@ -95,17 +97,11 @@ export default {
         this.$toast.error('Failed to get data from server')
       }
     },
-    async getBookTitle (items) {
-      var itemLength = items.length
-      for (var i = 0; i < itemLength; i++) {
-        let bookId = items[i].book_id
-        let bookInfo = await axios.get('https://bookgo.herokuapp.com/interests/' + bookId)
-        items[i].title = bookInfo.data.title
-      }
-      return items
+    home: function() {
+      this.$router.push({ path: '/'})
     },
     moveToRegister: function () {
-      this.$router.push({ path: 'register' })
+      this.$router.push({ path: '/register' })
     }
   }
 }

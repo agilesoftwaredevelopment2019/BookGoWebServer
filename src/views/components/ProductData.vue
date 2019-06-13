@@ -6,10 +6,10 @@
           <v-img height="150px" width="150px" src="https://picsum.photos/500/300?image=15">
           </v-img>
         </v-flex>
-        <v-flex>
-        </v-flex>
         <v-flex xs7 d-flex>
           <v-layout align-center column>
+            <v-flex xs1>
+            </v-flex>
             <v-flex xs3>
               제목 : {{ title }}
             </v-flex>
@@ -51,7 +51,7 @@ export default {
   methods: {
     ...mapActions(['setItemInfo']),
     moveToBook () {
-      this.setItemInfo({ title: this.title, author: this.author, publisher: this.publisher, uid: this.uid, price: this.price, sellerId: this.sellerId, description: this.description })
+      this.setItemInfo({ title: this.title, author: this.author, publisher: this.publisher, uid: this.uid, price: this.price, sellerId: this.seller_id, description: this.description, uid: this.product_id})
       this.$router.push({ path: '/book' })
     }
   },

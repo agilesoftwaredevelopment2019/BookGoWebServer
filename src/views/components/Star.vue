@@ -30,7 +30,7 @@ export default {
         let response = await axios.get('https://bookgo.herokuapp.com/interests/' + uid)
         window.console.log(response)
         const f = response.data.find((element) => {
-          return element.book_id === this.$store.state.item.book_id
+          return element.product_id === this.$store.state.item.uid
         })
         this.isInterested = f !== undefined
       } catch (err) {
@@ -44,13 +44,13 @@ export default {
       try {
         if (this.isInterested) {
           let uid = this.$store.state.uid
-          let bid = this.$store.state.item.book_id
-          await axios.delete('https://bookgo.herokuapp.com/interests/' + uid + '/' + bid)
+          let pid = this.$store.state.item.uid
+          await axios.delete('https://bookgo.herokuapp.com/interests/' + uid + '/' + pid)
           this.$toast.info('관심상품이 해제되었습니다')
         } else {
           await axios.post('https://bookgo.herokuapp.com/interests', {
             user_id: this.$store.state.uid,
-            product_id: this.$store.state.item.book_id
+            product_id: this.$store.state.item.uid
           })
           this.$toast.info('관심상품이 등록되었습니다')
         }
