@@ -1,6 +1,6 @@
 <template>
   <v-layout align-center justify-center>
-    <v-flex xs12 sm6>
+    <v-flex xs11>
       <v-text-field
         v-model="bookname"
         label="도서 제목"

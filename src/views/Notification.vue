@@ -1,6 +1,6 @@
 <template>
   <v-layout align-center justify-center>
-    <v-flex xs12 sm6>
+    <v-flex xs11>
       <p style="font-size:24px;" align="center">
           알림
       </p>
