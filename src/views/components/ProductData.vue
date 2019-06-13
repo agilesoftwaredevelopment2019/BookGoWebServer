@@ -2,7 +2,7 @@
   <div>
     <v-container v-on:click="moveToBook" mb-2 class="blue lighten-4">
       <v-layout>
-        <v-flex xs5>
+        <v-flex xs6>
           <v-img height="150px" width="150px" v-if="title === 'Hayt의 전자기학'" src="https://image.aladin.co.kr/product/17757/88/cover150/k212534220_1.jpg">
           </v-img>
           <v-img height="150px" width="150px" v-if="title === '옥스토비의 일반화학'" src="https://image.aladin.co.kr/product/3896/57/cover150/899260372x_1.jpg">
