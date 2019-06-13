@@ -97,8 +97,8 @@ export default {
         this.$toast.error('Failed to get data from server')
       }
     },
-    home: function() {
-      this.$router.push({ path: '/'})
+    home: function () {
+      this.$router.push({ path: '/' })
     },
     moveToRegister: function () {
       this.$router.push({ path: '/register' })

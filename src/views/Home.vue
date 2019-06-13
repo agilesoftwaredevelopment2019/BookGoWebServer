@@ -60,7 +60,7 @@ export default {
     async getProductData () {
       try {
         let productData = await axios.get('https://bookgo.herokuapp.com/products/listWithTitle')
-        if (productData.data.result === "NOT_FOUND") {
+        if (productData.data.result === 'NOT_FOUND') {
           this.$toast.info('등록된 상품이 없습니다')
         } else {
           this.items = productData.data
