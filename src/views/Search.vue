@@ -1,62 +1,72 @@
 <template>
-    <v-layout align-center justify-center>
-        <v-flex xs11>
-            <div>
-                <SearchBar/>
+  <v-layout justify-center mt-2>
+    <v-flex xs11>
+      <v-layout fill-height="" column>
+        <v-flex text-xs-center ma-3>
+          <template v-if="this.items !== ''">
+            <div class="headline">
+              {{ this.items[0].title }} 검색 결과
             </div>
-            <div id="product_data_list">
-                <ProductData
-                    v-for="(bookname, price, seller_id) in items"
-                    v-bind:bookname="bookname"
-                    v-bind:price="price"
-                    v-bind:seller_id="seller_id"
-                    v-bind:key="bookname.id">
-                </ProductData>
+          </template>
+          <template v-if="this.items === ''">
+            <div class="headline">
+              검색 결과 없음
             </div>
+          </template>
         </v-flex>
-    </v-layout>
+        <div id="product_data_list">
+          <template v-if="this.items !== ''" >
+            <ProductData
+              v-for="(item, index) in items"
+              v-bind:title=item.title
+              v-bind:price=item.price
+              v-bind:seller_id=item.seller_id
+              v-bind:author=item.author
+              v-bind:publisher=item.publisher
+              v-bind:description=item.description
+              v-bind:image_path=item.image_path
+              v-bind:product_id=item.product_id
+              v-bind:key=index>
+            </ProductData>
+          </template>
+        </div>
+        <v-flex text-xs-center>
+          <v-btn v-on:click="home" round color="primary" dark>
+            홈으로
+          </v-btn>
+        </v-flex>
+      </v-layout>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
 
 import SearchBar from './components/SearchBar.vue'
+import ProductData from './components/ProductData.vue'
 import axios from 'axios'
 
 export default {
   name: 'Search',
   components: {
-    SearchBar
-  },
-  items: {
-    bookname: 'test',
-    price: 3000,
-    seller_id: 12,
-    id: 1
+    SearchBar,
+    ProductData
   },
   methods: {
-    async getProductData () {
-      try {
-        let productData = await axios.get('https://bookgo.herokuapp.com/books')
-        const items = productData.data
-        let itemsWithTitle = await this.getBookTitle(items)
-        this.items = itemsWithTitle
-      } catch (err) {
-        this.$toast.error('Failed to get data from server')
-      }
+    home () {
+      this.$router.push({ path: '/' })
     },
-    async getBookTitle (items) {
-      var itemLength = items.length
-      for (var i = 0; i < itemLength; i++) {
-        let bookId = items[i].book_id
-        let bookInfo = await axios.get('https://bookgo.herokuapp.com/books/' + bookId)
-        items[i].title = bookInfo.data.title
-      }
-      return items
+  },
+  beforeMount () {
+    if (this.$route.params.data.result !== 'NOT_FOUND') {
+      this.items = this.$route.params.data
+    } else {
+      this.items = ''
     }
   },
   data () {
     return {
-
+      items: []
     }
   }
 }

@@ -5,7 +5,8 @@
         <SearchBar/>
       </div>
       <div>
-        <v-tabs content-class="mt-3">
+        <v-tabs color="cyan" content-class="mt-3" grow>
+          <v-tabs-slider color="yellow"></v-tabs-slider>
           <v-tab>
             관심상품
           </v-tab>
@@ -15,6 +16,8 @@
           <v-tab>
             구매신청
           </v-tab>
+        </v-tabs>
+        <v-tabs-items>
           <v-tab-item>
             <div id="interested_list">
               <ProductData
@@ -31,7 +34,13 @@
               </ProductData>
             </div>
           </v-tab-item>
-        </v-tabs>
+          <v-tab-item>
+            sale
+          </v-tab-item>
+          <v-tab-item>
+            buy
+          </v-tab-item>
+        </v-tabs-items>
       </div>
       <v-flex text-xs-center mt-2>
         <v-btn v-on:click="moveToRegister" round color="primary" dark>

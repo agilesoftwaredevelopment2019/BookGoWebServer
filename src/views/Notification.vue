@@ -1,5 +1,5 @@
 <template>
-  <v-layout align-center justify-center>
+  <v-layout align-center justify-center mt-2>
     <v-flex xs11>
       <p style="font-size:24px;" align="center">
           알림
