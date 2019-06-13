@@ -77,7 +77,6 @@ export default {
       if (response.data.length === 0) {
         console.log('SERVER failed')
       } else {
-        console.log('why not')
         this.$router.push({ path: '/login' })
       }
     }

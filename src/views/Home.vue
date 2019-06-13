@@ -22,6 +22,8 @@
             v-bind:product_id=item.product_id
             v-bind:key=index>
           </ProductData>
+          <div id="Nodata">
+          </div>
         </div>
       </div>
     </v-flex>
@@ -58,7 +60,11 @@ export default {
     async getProductData () {
       try {
         let productData = await axios.get('https://bookgo.herokuapp.com/products/listWithTitle')
-        this.items = productData.data
+        if (productData.data.result === "NOT_FOUND") {
+          this.$toast.info('등록된 상품이 없습니다')
+        } else {
+          this.items = productData.data
+        }
       } catch (err) {
         this.$toast.error('Failed to get data from server')
       }

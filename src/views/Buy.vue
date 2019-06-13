@@ -12,7 +12,7 @@
         <v-flex xs3>
           <v-textarea
             outline
-            v-model="description"
+            v-model="message"
             label="구매 신청 메시지"
             required
             wrap
@@ -47,7 +47,7 @@ export default {
   data () {
     return {
       phonenumber: '',
-      description: ''
+      message: ''
     }
   },
   methods: {
@@ -57,13 +57,14 @@ export default {
     async requestContract () {
       try {
         let transactionResponse = await axios.post('https://bookgo.herokuapp.com/transactions', {
-          product_id: this.$store.state.item.uid,
-          buyer_id: this.$store.state.uid,
-          seller_id: this.$store.state.item.seller_id,
-          price: this.$store.state.item.price,
-          message: this.description,
+          product_id: String(this.$store.state.item.uid),
+          buyer_id: String(this.$store.state.uid),
+          seller_id: String(this.$store.state.item.sellerId),
+          price: String(this.$store.state.item.price),
+          message: this.message,
           phonenumber: this.phonenumber
         })
+        console.log(transactionResponse)
         if (transactionResponse.data.result === 'CREATE') {
           this.$toast.info('구매 신청이 완료되었습니다.')
           this.$router.push({ path: '/' })
