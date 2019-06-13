@@ -43,9 +43,11 @@
         </v-layout>
       </v-card>
       <div class="text-xs-center">
-        <v-btn v-on:click="moveToBuy" round color="primary" dark>
-          구매 신청하기
-        </v-btn>
+        <template v-if="this.$store.state.item.sellerId !== this.$store.state.uid">
+          <v-btn v-on:click="moveToBuy" round color="primary" dark>
+            구매 신청하기
+          </v-btn>  
+        </template>
         <v-btn v-on:click="home" round color="primary" dark>
           홈으로
         </v-btn>
