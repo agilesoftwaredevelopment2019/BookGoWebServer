@@ -1,11 +1,16 @@
 <template>
   <v-layout align-center justify-center>
     <v-flex xs11>
-      <v-text-field
-        v-model="bookname"
-        label="도서 제목"
-        required
-      ></v-text-field>
+      <select v-model="bookname">
+        <option disabled value="">도서 제목</option>
+        <option>Hayt의 전자기학</option>
+        <option>옥스토비의 일반화학</option>
+        <option>Kreyszig 공업수학 - 하</option>
+        <option>Kreyszig 공업수학 - 상</option>
+        <option>이펙티브 C++</option>
+        <option>컴퓨터 구조 및 설계</option>
+        <option>타이포그래피 교과서</option>
+      </select>
       <v-text-field
         v-model="author"
         label="저자 이름"
