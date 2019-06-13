@@ -9,7 +9,7 @@
         >
           <template v-slot:append>
             <v-layout align-content-end>
-              <v-btn flat icon color="blue">
+              <v-btn v-on:click="searchItem" flat icon color="blue">
                 <v-icon>search</v-icon>
               </v-btn>
             </v-layout>

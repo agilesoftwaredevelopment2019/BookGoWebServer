@@ -5,20 +5,25 @@
         <Star>
         </Star>
       </div>
-      <v-card height="500px">
-        <v-layout align-center column>
+      <v-card height="600px">
+        <v-layout align-center column fill-height>
           <v-flex xs6>
             <v-img height="300px" width="300px" src="https://picsum.photos/500/300?image=15">
             </v-img>
           </v-flex>
-          <div class="headline">
-            {{ this.$store.state.item.title }}
-          </div>
-          <v-flex xs3>
-            {{ this.$store.state.item.publisher }}
+          <v-flex xs2>
+            <div class="headline">
+              제목 : {{ this.$store.state.item.title }}
+            </div>
+          </v-flex>
+          <v-flex xs2>
+            출판사 : {{ this.$store.state.item.publisher }}
           </v-flex>
           <v-flex xs2>
             가격 : {{ this.$store.state.item.price }}
+          </v-flex>
+          <v-flex xs2>
+            설명 : {{ this.$store.state.item.description }}
           </v-flex>
         </v-layout>
       </v-card>

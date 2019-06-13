@@ -1,5 +1,5 @@
 <template>
-  <v-layout class="align-center justify-center">
+  <v-layout class="align-center justify-center" mt-2>
     <v-flex xs11>
       <div>
         <SearchBar/>
@@ -33,12 +33,14 @@
           </v-tab-item>
         </v-tabs>
       </div>
-      <v-btn v-on:click="moveToRegister" round color="primary" dark>
-        판매할 상품 등록하기
-      </v-btn>
-      <v-btn v-on:click="home" round color="primary" dark>
-        홈으로
-      </v-btn>
+      <v-flex text-xs-center mt-2>
+        <v-btn v-on:click="moveToRegister" round color="primary" dark>
+          판매할 상품 등록하기
+        </v-btn>
+        <v-btn v-on:click="home" round color="primary" dark>
+          홈으로
+        </v-btn>
+      </v-flex>
     </v-flex>
   </v-layout>
 </template>
